@@ -57,7 +57,7 @@ video.addEventListener("play", async () => {
       console.log("Suriya detected:", response.status);
     } else {
       // Send a POST request to Salesforce indicating "suriya" is not detected
-      const response = await fetch("https://computing-saas-6446-dev-ed.scratch.my.salesforce.com/_ui/common/apex/debug/ApexCSIPage", {
+      const response = await fetch("https://dream-force-2814-dev-ed.scratch.my.salesforce.com/services/apexrest/facerecognition", {
         method: "POST",
         body: JSON.stringify({ detected: false }),
         headers: {
