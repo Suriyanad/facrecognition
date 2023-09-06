@@ -41,6 +41,32 @@ function getLabeledFaceDescriptions() {
 video.addEventListener("play", async () => {
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
+  let isSuriyaDetected = false; // Flag to track detection status
+
+  // Set a timeout of 10 seconds to send the result to Salesforce
+  setTimeout(async () => {
+    if (isSuriyaDetected) {
+      // Send a POST request to Salesforce indicating "suriya" is detected
+      const response = await fetch("SALESFORCE_ENDPOINT", {
+        method: "POST",
+        body: JSON.stringify({ detected: true }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Suriya detected:", response.status);
+    } else {
+      // Send a POST request to Salesforce indicating "suriya" is not detected
+      const response = await fetch("SALESFORCE_ENDPOINT", {
+        method: "POST",
+        body: JSON.stringify({ detected: false }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Suriya not detected:", response.status);
+    }
+  }, 10000); // 10 seconds
 
   const canvas = faceapi.createCanvasFromMedia(video);
   document.body.append(canvas);
@@ -58,14 +84,17 @@ video.addEventListener("play", async () => {
 
     canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 
-    const results = resizedDetections.map((d) => {
-      return faceMatcher.findBestMatch(d.descriptor);
-    });
-    results.forEach((result, i) => {
-      const box = resizedDetections[i].detection.box;
+    resizedDetections.forEach((d) => {
+      const result = faceMatcher.findBestMatch(d.descriptor);
+      const box = d.detection.box;
       const drawBox = new faceapi.draw.DrawBox(box, {
-        label: result,
+        label: result.label,
       });
+
+      if (result.label === "suriya") {
+        isSuriyaDetected = true;
+      }
+
       drawBox.draw(canvas);
     });
   }, 100);
