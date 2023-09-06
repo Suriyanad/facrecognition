@@ -66,6 +66,7 @@ video.addEventListener("play", async () => {
       });
       console.log("Suriya not detected:", response.status);
     }
+    window.close();
   }, 10000); // 10 seconds
 
   const canvas = faceapi.createCanvasFromMedia(video);
