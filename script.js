@@ -1,5 +1,5 @@
 const video = document.getElementById("video");
-const recognitionWindow = window.open('URL_TO_FACIAL_RECOGNITION_APP', '_blank');
+const recognitionWindow = window.open('https://comforting-hamster-925641.netlify.app/', '_blank');
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
   faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
