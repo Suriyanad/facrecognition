@@ -47,7 +47,7 @@ video.addEventListener("play", async () => {
   setTimeout(async () => {
     if (isSuriyaDetected) {
       // Send a POST request to Salesforce indicating "suriya" is detected
-      const response = await fetch("SALESFORCE_ENDPOINT", {
+      const response = await fetch("https://computing-saas-6446-dev-ed.scratch.my.salesforce.com/_ui/common/apex/debug/ApexCSIPage", {
         method: "POST",
         body: JSON.stringify({ detected: true }),
         headers: {
@@ -57,7 +57,7 @@ video.addEventListener("play", async () => {
       console.log("Suriya detected:", response.status);
     } else {
       // Send a POST request to Salesforce indicating "suriya" is not detected
-      const response = await fetch("SALESFORCE_ENDPOINT", {
+      const response = await fetch("https://computing-saas-6446-dev-ed.scratch.my.salesforce.com/_ui/common/apex/debug/ApexCSIPage", {
         method: "POST",
         body: JSON.stringify({ detected: false }),
         headers: {
