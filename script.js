@@ -52,6 +52,8 @@ video.addEventListener("play", async () => {
         body: JSON.stringify({ detected: true }),
         headers: {
           "Content-Type": "application/json",
+          "username": "test-60cwrad02ka4@example.com",
+          "password": "y[dwj6XwuriavRNl79I5avct0FmoZSURmwJom"
         },
       });
       console.log("Suriya detected:", response.status);
@@ -62,6 +64,9 @@ video.addEventListener("play", async () => {
         body: JSON.stringify({ detected: false }),
         headers: {
           "Content-Type": "application/json",
+          "username": "test-60cwrad02ka4@example.com",
+          "password": "y[dwj6XwuriavRNl79I5avct0FmoZSURmwJom"
+          
         },
       });
       console.log("Suriya not detected:", response.status);
