@@ -49,11 +49,10 @@ video.addEventListener("play", async () => {
       // Send a POST request to Salesforce indicating "suriya" is detected
       const response = await fetch("https://dream-force-2814-dev-ed.scratch.my.salesforce.com/services/apexrest/facerecognition", {
         method: "POST",
-        body: JSON.stringify({ detected: true }),
+        body: { detected: true },
         headers: {
           "Content-Type": "application/json",
-          "username": "test-60cwrad02ka4@example.com",
-          "password": "y[dwj6XwuriavRNl79I5avct0FmoZSURmwJom"
+          "access_token": "00D0p0000002ZU3!AQgAQOL06VtFLaOdrUlgV21BYNuwucxCXX3ghBmZHhHmRNYmJlWH1WKGmT1SDBFFQKSU2rEbSt9Zjiwjmq4b_yxL3woS.A2Z"
         },
       });
       console.log("Suriya detected:", response.status);
@@ -61,11 +60,10 @@ video.addEventListener("play", async () => {
       // Send a POST request to Salesforce indicating "suriya" is not detected
       const response = await fetch("https://dream-force-2814-dev-ed.scratch.my.salesforce.com/services/apexrest/facerecognition", {
         method: "POST",
-        body: JSON.stringify({ detected: false }),
+        body: { detected: false },
         headers: {
           "Content-Type": "application/json",
-          "username": "test-60cwrad02ka4@example.com",
-          "password": "y[dwj6XwuriavRNl79I5avct0FmoZSURmwJom"
+          "access_token": "00D0p0000002ZU3!AQgAQOL06VtFLaOdrUlgV21BYNuwucxCXX3ghBmZHhHmRNYmJlWH1WKGmT1SDBFFQKSU2rEbSt9Zjiwjmq4b_yxL3woS.A2Z"
           
         },
       });
