@@ -125,7 +125,7 @@ video.addEventListener("play", async () => {
         body: { "detected": "true" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 00D0p0000002ZU3!AQgAQJ3Yhy_pOCiDFpaZbc6YuKenP_RtixY5LByEENWsNf7n5TIwHIqsLz.ghZvq4S_pLXipXNTEZt.K9LHmGHbVP1A_Q.DN"
+          "Authorization": "Bearer 00D0p0000002ZU3!AQgAQCp0pOA5xnHef30lYIqs3QHB4DbrETIbrmbO1Clf_CfAnoU52hzUtrGT9abKPZZ4S1mwiKR2VJFPFTMHsDZIfqwCvyyc"
         },
       });
       console.log("Suriya detected:", response.status);
@@ -136,7 +136,7 @@ video.addEventListener("play", async () => {
         body: { "detected": "false" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 00D0p0000002ZU3!AQgAQJ3Yhy_pOCiDFpaZbc6YuKenP_RtixY5LByEENWsNf7n5TIwHIqsLz.ghZvq4S_pLXipXNTEZt.K9LHmGHbVP1A_Q.DN"
+          "Authorization": "Bearer 00D0p0000002ZU3!AQgAQCp0pOA5xnHef30lYIqs3QHB4DbrETIbrmbO1Clf_CfAnoU52hzUtrGT9abKPZZ4S1mwiKR2VJFPFTMHsDZIfqwCvyyc"
           
         },
       });
