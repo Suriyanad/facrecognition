@@ -131,7 +131,8 @@ video.addEventListener("play", async () => {
   let isSuriyaDetected = false; // Flag to track detection status
   const postUrl = instanceUrl+'/services/apexrest/Baytree/facerecognition'
   console.log(postUrl);
-  console.log('bearer '+accessToken);
+  const bearerAccess = 'bearer '+accessToken;
+  console.log(bearerAccess);
   // Set a timeout of 10 seconds to send the result to Salesforce
   setTimeout(async () => {
     if (isSuriyaDetected) {
@@ -142,7 +143,7 @@ video.addEventListener("play", async () => {
         body: { "detected": "true" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": 'Bearer '+accessToken
+          "Authorization": bearerAccess
         },
       });
       console.log("Suriya detected:", response.status);
@@ -154,7 +155,7 @@ video.addEventListener("play", async () => {
         body: { "detected": "false" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": 'Bearer '+accessToken
+          "Authorization": bearerAccess
           
         },
       });
