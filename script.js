@@ -77,7 +77,7 @@ video.addEventListener("play", async () => {
     } else {
       // Send a POST request to Salesforce indicating "suriya" is not detected
       const postUrlFalse = instanceUrl+'/services/apexrest/Baytree/facerecognition?detected=false';
-      const response = await fetch(postUrlFalse", {
+      const response = await fetch(postUrlFalse, {
         method: "GET",
         //body: { "detected": "false" },
         headers: {
