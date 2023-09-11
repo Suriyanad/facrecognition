@@ -130,28 +130,30 @@ video.addEventListener("play", async () => {
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
   let isSuriyaDetected = false; // Flag to track detection status
-
+  const postUrl = "${instanceUrl}/services/apexrest/Baytree/facerecognition"
   // Set a timeout of 10 seconds to send the result to Salesforce
   setTimeout(async () => {
     if (isSuriyaDetected) {
       // Send a POST request to Salesforce indicating "suriya" is detected
-      const response = await fetch("https://dream-force-2814-dev-ed.scratch.my.salesforce.com/services/apexrest/Baytree/facerecognition", {
+      //const postUrl = "${instanceUrl}/services/apexrest/Baytree/facerecognition";
+      const response = await fetch(postUrl, {
         method: "POST",
         body: { "detected": "true" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 00D0p0000002ZU3!AQgAQCp0pOA5xnHef30lYIqs3QHB4DbrETIbrmbO1Clf_CfAnoU52hzUtrGT9abKPZZ4S1mwiKR2VJFPFTMHsDZIfqwCvyyc"
+          "Authorization": "Bearer ${accessToken}"
         },
       });
       console.log("Suriya detected:", response.status);
     } else {
       // Send a POST request to Salesforce indicating "suriya" is not detected
-      const response = await fetch("https://dream-force-2814-dev-ed.scratch.my.salesforce.com/services/apexrest/Baytree/facerecognition", {
+      
+      const response = await fetch(postUrl, {
         method: "POST",
         body: { "detected": "false" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 00D0p0000002ZU3!AQgAQCp0pOA5xnHef30lYIqs3QHB4DbrETIbrmbO1Clf_CfAnoU52hzUtrGT9abKPZZ4S1mwiKR2VJFPFTMHsDZIfqwCvyyc"
+          "Authorization": "Bearer ${accessToken}"
           
         },
       });
