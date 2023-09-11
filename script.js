@@ -130,17 +130,6 @@ const video = document.getElementById("video");
 const recognitionWindow = window.open('https://comforting-hamster-925641.netlify.app/', '_blank');
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
-
-    
-          
-            
-    
-
-          
-          Expand Down
-    
-    
-  
   faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
   faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
 ]).then(startWebcam);
