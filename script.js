@@ -69,8 +69,8 @@ video.addEventListener("play", async () => {
       // Send a POST request to Salesforce indicating "suriya" is detected
       //const postUrl = "${instanceUrl}/services/apexrest/Baytree/facerecognition";
       const response = await fetch("https://dream-force-2814-dev-ed.scratch.my.salesforce.com/services/apexrest/Baytree/facerecognition?detected=true", {
-        method: "POST",
-        body: { "detected": "true" },
+        method: "GET",
+        //body: { "detected": "true" },
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer 00D0p0000002ZU3!AQgAQIIyMbhb4245_z7CBMgAOWJHgALDqD95kN301sM6JZrx3U9yx3sW1R8eKWCTyCTL0wWjWEMvxfb6rNMj5C9Pt2ployTF"
@@ -81,8 +81,8 @@ video.addEventListener("play", async () => {
       // Send a POST request to Salesforce indicating "suriya" is not detected
       
       const response = await fetch("https://dream-force-2814-dev-ed.scratch.my.salesforce.com/services/apexrest/Baytree/facerecognition?detected=false", {
-        method: "POST",
-        body: { "detected": "false" },
+        method: "GET",
+        //body: { "detected": "false" },
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer 00D0p0000002ZU3!AQgAQIIyMbhb4245_z7CBMgAOWJHgALDqD95kN301sM6JZrx3U9yx3sW1R8eKWCTyCTL0wWjWEMvxfb6rNMj5C9Pt2ployTF"
