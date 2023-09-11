@@ -72,6 +72,21 @@ video.addEventListener("play", async () => {
 });
 */
 const video = document.getElementById("video");
+// Function to get query parameters from the URL
+function getQueryParameter(parameterName) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get(parameterName);
+}
+
+// Get the access token and instance URL from query parameters
+const accessToken = getQueryParameter('accessToken');
+const instanceUrl = getQueryParameter('instanceUrl');
+
+// Now you can use accessToken and instanceUrl in your app
+console.log('Access Token:', accessToken);
+console.log('Instance URL:', instanceUrl);
+
 const recognitionWindow = window.open('https://comforting-hamster-925641.netlify.app/', '_blank');
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
