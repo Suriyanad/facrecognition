@@ -87,7 +87,6 @@ const instanceUrl = getQueryParameter('instanceUrl');
 console.log('Access Token:', accessToken);
 console.log('Instance URL:', instanceUrl);
 
-const recognitionWindow = window.open('https://comforting-hamster-925641.netlify.app/', '_blank');
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
   faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
@@ -130,30 +129,30 @@ video.addEventListener("play", async () => {
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
   let isSuriyaDetected = false; // Flag to track detection status
-  const postUrl = "${instanceUrl}/services/apexrest/Baytree/facerecognition"
+  const postUrl = '${instanceUrl}/services/apexrest/Baytree/facerecognition'
   // Set a timeout of 10 seconds to send the result to Salesforce
   setTimeout(async () => {
     if (isSuriyaDetected) {
       // Send a POST request to Salesforce indicating "suriya" is detected
       //const postUrl = "${instanceUrl}/services/apexrest/Baytree/facerecognition";
-      const response = await fetch("${instanceUrl}/services/apexrest/Baytree/facerecognition", {
+      const response = await fetch(postUrl, {
         method: "POST",
         body: { "detected": "true" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer ${accessToken}"
+          "Authorization": 'Bearer ${accessToken}'
         },
       });
       console.log("Suriya detected:", response.status);
     } else {
       // Send a POST request to Salesforce indicating "suriya" is not detected
       
-      const response = await fetch("${instanceUrl}/services/apexrest/Baytree/facerecognition", {
+      const response = await fetch(postUrl, {
         method: "POST",
         body: { "detected": "false" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer ${accessToken}"
+          "Authorization": 'Bearer ${accessToken}'
           
         },
       });
