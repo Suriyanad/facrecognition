@@ -130,6 +130,7 @@ video.addEventListener("play", async () => {
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
   let isSuriyaDetected = false; // Flag to track detection status
   const postUrl = '${instanceUrl}/services/apexrest/Baytree/facerecognition'
+  console.log(postUrl);
   // Set a timeout of 10 seconds to send the result to Salesforce
   setTimeout(async () => {
     if (isSuriyaDetected) {
