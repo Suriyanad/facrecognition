@@ -57,9 +57,6 @@ video.addEventListener("play", async () => {
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
   let isSuriyaDetected = false; // Flag to track detection status
   
-  const postUrl = instanceUrl+'/services/apexrest/Baytree/facerecognition'
-  console.log(postUrl);
-  
   const bearerAccess = 'bearer '+accessToken;
   console.log(bearerAccess);
   
@@ -67,25 +64,25 @@ video.addEventListener("play", async () => {
   setTimeout(async () => {
     if (isSuriyaDetected) {
       // Send a POST request to Salesforce indicating "suriya" is detected
-      //const postUrl = "${instanceUrl}/services/apexrest/Baytree/facerecognition";
-      const response = await fetch("https://dream-force-2814-dev-ed.scratch.my.salesforce.com/services/apexrest/Baytree/facerecognition?detected=true", {
+      const postUrlTrue = "${instanceUrl}/services/apexrest/Baytree/facerecognition?detected=true";
+      const response = await fetch(postUrlTrue, {
         method: "GET",
         //body: { "detected": "true" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 00D0p0000002ZU3!AQgAQIIyMbhb4245_z7CBMgAOWJHgALDqD95kN301sM6JZrx3U9yx3sW1R8eKWCTyCTL0wWjWEMvxfb6rNMj5C9Pt2ployTF"
+          "Authorization": "Bearer "+accessToken
         },
       });
       console.log("Suriya detected:", response.status);
     } else {
       // Send a POST request to Salesforce indicating "suriya" is not detected
-      
-      const response = await fetch("https://dream-force-2814-dev-ed.scratch.my.salesforce.com/services/apexrest/Baytree/facerecognition?detected=false", {
+      const postUrlFalse = "${instanceUrl}/services/apexrest/Baytree/facerecognition?detected=false"
+      const response = await fetch(postUrlFalse", {
         method: "GET",
         //body: { "detected": "false" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 00D0p0000002ZU3!AQgAQIIyMbhb4245_z7CBMgAOWJHgALDqD95kN301sM6JZrx3U9yx3sW1R8eKWCTyCTL0wWjWEMvxfb6rNMj5C9Pt2ployTF"
+          "Authorization": "Bearer "+accessToken
           
         },
       });
