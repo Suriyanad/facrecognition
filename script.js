@@ -141,7 +141,7 @@ video.addEventListener("play", async () => {
     if (isSuriyaDetected) {
       // Send a POST request to Salesforce indicating "suriya" is detected
       //const postUrl = "${instanceUrl}/services/apexrest/Baytree/facerecognition";
-      const response = await fetch(postUrl, {
+      const response = await fetch('https://dream-force-2814-dev-ed.scratch.lightning.force.com/services/oauth2/token', {
         method: "POST",
         body: { "detected": "true" },
         headers: {
@@ -153,7 +153,7 @@ video.addEventListener("play", async () => {
     } else {
       // Send a POST request to Salesforce indicating "suriya" is not detected
       
-      const response = await fetch(postUrl, {
+      const response = await fetch('https://dream-force-2814-dev-ed.scratch.lightning.force.com/services/oauth2/token', {
         method: "POST",
         body: { "detected": "false" },
         headers: {
