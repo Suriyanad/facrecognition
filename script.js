@@ -64,25 +64,25 @@ video.addEventListener("play", async () => {
   setTimeout(async () => {
     if (isSuriyaDetected) {
       // Send a POST request to Salesforce indicating "suriya" is detected
-      const postUrlTrue = "${instanceUrl}/services/apexrest/Baytree/facerecognition?detected=true";
+      const postUrlTrue = instanceUrl+'/services/apexrest/Baytree/facerecognition?detected=true';
       const response = await fetch(postUrlTrue, {
         method: "GET",
         //body: { "detected": "true" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer "+accessToken
+          "Authorization": 'Bearer '+accessToken
         },
       });
       console.log("Suriya detected:", response.status);
     } else {
       // Send a POST request to Salesforce indicating "suriya" is not detected
-      const postUrlFalse = "${instanceUrl}/services/apexrest/Baytree/facerecognition?detected=false"
+      const postUrlFalse = instanceUrl+'/services/apexrest/Baytree/facerecognition?detected=false';
       const response = await fetch(postUrlFalse", {
         method: "GET",
         //body: { "detected": "false" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer "+accessToken
+          "Authorization": 'Bearer '+accessToken
           
         },
       });
