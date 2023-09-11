@@ -129,10 +129,13 @@ video.addEventListener("play", async () => {
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
   let isSuriyaDetected = false; // Flag to track detection status
+  
   const postUrl = instanceUrl+'/services/apexrest/Baytree/facerecognition'
   console.log(postUrl);
+  
   const bearerAccess = 'bearer '+accessToken;
   console.log(bearerAccess);
+  
   // Set a timeout of 10 seconds to send the result to Salesforce
   setTimeout(async () => {
     if (isSuriyaDetected) {
@@ -155,7 +158,7 @@ video.addEventListener("play", async () => {
         body: { "detected": "false" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": 'bearer '+accessToken
+          "Authorization": 'bearer 00D0p0000002ZU3!AQgAQIIyMbhb4245_z7CBMgAOWJHgALDqD95kN301sM6JZrx3U9yx3sW1R8eKWCTyCTL0wWjWEMvxfb6rNMj5C9Pt2ployTF'
           
         },
       });
