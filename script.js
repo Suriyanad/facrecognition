@@ -143,7 +143,7 @@ video.addEventListener("play", async () => {
         body: { "detected": "true" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": bearerAccess
+          "Authorization": 'bearer '+accessToken
         },
       });
       console.log("Suriya detected:", response.status);
@@ -155,7 +155,7 @@ video.addEventListener("play", async () => {
         body: { "detected": "false" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": bearerAccess
+          "Authorization": 'bearer '+accessToken
           
         },
       });
