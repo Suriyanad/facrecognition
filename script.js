@@ -146,7 +146,7 @@ video.addEventListener("play", async () => {
         body: { "detected": "true" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": 'bearer '+accessToken
+          "Authorization": 'Bearer '+accessToken
         },
       });
       console.log("Suriya detected:", response.status);
@@ -158,7 +158,7 @@ video.addEventListener("play", async () => {
         body: { "detected": "false" },
         headers: {
           "Content-Type": "application/json",
-          "Authorization": 'bearer 00D0p0000002ZU3!AQgAQIIyMbhb4245_z7CBMgAOWJHgALDqD95kN301sM6JZrx3U9yx3sW1R8eKWCTyCTL0wWjWEMvxfb6rNMj5C9Pt2ployTF'
+          "Authorization": 'Bearer '+accessToken
           
         },
       });
