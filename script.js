@@ -1,6 +1,6 @@
 const video = document.getElementById("video");
 // Function to get query parameters from the URL
-function getQueryParameter(parameterName) {
+/*function getQueryParameter(parameterName) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     return urlParams.get(parameterName);
@@ -13,7 +13,7 @@ const instanceUrl = getQueryParameter('instanceUrl');
 // Now you can use accessToken and instanceUrl in your app
 console.log('Access Token:', accessToken);
 console.log('Instance URL:', instanceUrl);
-/*
+
 // Make an HTTP POST request to the Netlify serverless function
 fetch('/.netlify/functions/salesforce', {
   method: 'POST',
@@ -84,13 +84,13 @@ video.addEventListener("play", async () => {
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
   let isSuriyaDetected = false; // Flag to track detection status
   
-  const bearerAccess = 'bearer '+accessToken;
-  console.log(bearerAccess);
+  //const bearerAccess = 'bearer '+accessToken;
+  //console.log(bearerAccess);
   
   // Set a timeout of 10 seconds to send the result to Salesforce
   setTimeout(async () => {
-        const response = 'true';
-          window.opener.postMessage(response, '*');
+          //const response = 'true';
+          window.opener.postMessage(isSuriyaDetected, '*');
     /*if (isSuriyaDetected) {
       // Send a POST request to Salesforce indicating "suriya" is detected
       const postUrlTrue = instanceUrl+'/services/apexrest/Baytree/facerecognition?detected=true';
