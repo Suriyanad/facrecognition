@@ -89,7 +89,9 @@ video.addEventListener("play", async () => {
   
   // Set a timeout of 10 seconds to send the result to Salesforce
   setTimeout(async () => {
-    if (isSuriyaDetected) {
+        const response = 'true';
+          window.opener.postMessage(response, '*');
+    /*if (isSuriyaDetected) {
       // Send a POST request to Salesforce indicating "suriya" is detected
       const postUrlTrue = instanceUrl+'/services/apexrest/Baytree/facerecognition?detected=true';
       const response = await fetch(postUrlTrue, {
@@ -114,7 +116,7 @@ video.addEventListener("play", async () => {
         },
       });
       console.log("Suriya not detected:", response.status);
-    }
+    }*/
     
   }, 10000); // 10 seconds
 
