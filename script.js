@@ -1,6 +1,6 @@
 const video = document.getElementById("video");
 // Function to get query parameters from the URL
-/*function getQueryParameter(parameterName) {
+function getQueryParameter(parameterName) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     return urlParams.get(parameterName);
@@ -13,7 +13,7 @@ const instanceUrl = getQueryParameter('instanceUrl');
 // Now you can use accessToken and instanceUrl in your app
 console.log('Access Token:', accessToken);
 console.log('Instance URL:', instanceUrl);
-*/
+/*
 // Make an HTTP POST request to the Netlify serverless function
 fetch('/.netlify/functions/salesforce', {
   method: 'POST',
@@ -40,7 +40,7 @@ fetch('/.netlify/functions/salesforce', {
 .catch(error => {
   console.error('Error sending data to the server:', error);
 });
-
+*/
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
   faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
