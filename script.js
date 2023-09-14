@@ -79,7 +79,7 @@ video.addEventListener("play", async () => {
       drawBox.draw(canvas);
     });
   }, 100);
-
+  /*
     let detectionHandled = false;
   // Timeout of 10 seconds to recognize
   setTimeout(async () => {
@@ -95,5 +95,19 @@ video.addEventListener("play", async () => {
       }
     } 
     window.close(); //Close window after detection
-}, 5000); // 5 seconds
+}, 5000); // 5 seconds*/
+let detectionHandled = false;
+
+setTimeout(async () => {
+    if (!detectionHandled) { // Check if detection is already handled
+        if (distanceCounter > unknowncounter) {
+            isloanOfficerDetected = true;
+        }
+
+        window.opener.postMessage(isloanOfficerDetected, '*');
+        detectionHandled = true; // Set the flag to true to indicate detection is handled
+        window.close(); // Close the window after detection
+    }
+}, 5000);
+
 });
