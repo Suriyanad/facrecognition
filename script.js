@@ -91,5 +91,5 @@ video.addEventListener("play", async () => {
     }
     window.opener.postMessage(isloanOfficerDetected, '*');  
     window.close(); //Close window after detection
-}, 10000); // 10 seconds
+}, 5000); // 10 seconds
 });
