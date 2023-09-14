@@ -20,11 +20,11 @@ function startWebcam() {
 }
 
 function getLabeledFaceDescriptions() {
-  const labels = ["suriya"];
+  const labels = ["loanOfficer"];
   return Promise.all(
     labels.map(async (label) => {
       const descriptions = [];
-      for (let i = 1; i <= 12; i++) {
+      for (let i = 4; i <= 12; i++) {
         const img = await faceapi.fetchImage(`./labels/${label}/${i}.jpg`);
         const detections = await faceapi
           .detectSingleFace(img)
@@ -40,14 +40,10 @@ function getLabeledFaceDescriptions() {
 video.addEventListener("play", async () => {
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
-  let isSuriyaDetected = false; // Flag to track detection status
-    
-  // Timeout of 10 seconds
-  setTimeout(async () => {
-          //const response = 'true';
-          window.opener.postMessage(isSuriyaDetected, '*');    
-  }, 10000); // 10 seconds
-
+  let isloanOfficerDetected = false; // Flag to track detection status
+  
+  let distanceCounter = 0; 
+  let unknowncounter = 0;
   const canvas = faceapi.createCanvasFromMedia(video);
   document.body.append(canvas);
 
@@ -68,14 +64,35 @@ video.addEventListener("play", async () => {
       const result = faceMatcher.findBestMatch(d.descriptor);
       const box = d.detection.box;
       const drawBox = new faceapi.draw.DrawBox(box, {
-        label: result.label,
+        label: "Detecting...",//result.label,
       });
-
-      if (result.label === "suriya") {
-        isSuriyaDetected = true;
+      
+      if(result.distance<0.45){
+        distanceCounter++;
+      } else if(result.distance>0.55){
+        unknowncounter++;
       }
+      //if (result.label === "loanOfficer") {
+      //  isloanOfficerDetected = true;
+      //}
 
       drawBox.draw(canvas);
     });
   }, 100);
+  
+  // Timeout of 10 seconds to recognize
+  setTimeout(async () => {
+    //const response = 'true';
+    if(distanceCounter>unknowncounter){
+      console.log("detected");
+      isloanOfficerDetected = true;
+    }else{
+      console.log("Not detected");
+    }
+    window.opener.postMessage(isloanOfficerDetected, '*');  
+
+    setTimeout(() => {
+      window.location.href = document.referrer;
+    }, 1000); //delay for a split second
+}, 10000); // 10 seconds
 });
