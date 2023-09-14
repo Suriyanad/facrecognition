@@ -79,16 +79,22 @@ video.addEventListener("play", async () => {
       drawBox.draw(canvas);
     });
   }, 100);
-  
+
+    let detectionHandled = false;
   // Timeout of 10 seconds to recognize
   setTimeout(async () => {
     //const response = 'true';
-    if(distanceCounter>unknowncounter){
-      isloanOfficerDetected = true;
+    if(!detectionHandled){
+      if(distanceCounter>unknowncounter){
+      detectionHandled = true;
       window.opener.postMessage(isloanOfficerDetected, '*'); 
-    }else{
-      window.opener.postMessage(isloanOfficerDetected, '*');     }
+    }else
+      {
+      detectionHandled = true;
+      window.opener.postMessage(isloanOfficerDetected, '*');     
+      }
+    } else {
      
-    window.close(); //Close window after detection
+    window.close();} //Close window after detection
 }, 5000); // 5 seconds
 });
