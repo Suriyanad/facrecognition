@@ -72,42 +72,16 @@ video.addEventListener("play", async () => {
       } else if(result.distance>0.55){
         unknowncounter++;
       }
-      //if (result.label === "loanOfficer") {
-      //  isloanOfficerDetected = true;
-      //}
-
       drawBox.draw(canvas);
     });
   }, 100);
-  /*
-    let detectionHandled = false;
-  // Timeout of 10 seconds to recognize
+   // Timeout of 10 seconds to recognize
   setTimeout(async () => {
-    //const response = 'true';
-    if(!detectionHandled){
       if(distanceCounter>unknowncounter){
-      detectionHandled = true;
-      window.opener.postMessage(isloanOfficerDetected, '*'); 
-    }else
-      {
-      detectionHandled = true;
-      window.opener.postMessage(isloanOfficerDetected, '*');     
+            isloanOfficerDetected = true;    
       }
-    } 
-    window.close(); //Close window after detection
-}, 5000); // 5 seconds*/
-let detectionHandled = false;
-
-setTimeout(async () => {
-    if (!detectionHandled) { // Check if detection is already handled
-        if (distanceCounter > unknowncounter) {
-            isloanOfficerDetected = true;
-        }
-
-        window.opener.postMessage(isloanOfficerDetected, '*');
-        detectionHandled = true; // Set the flag to true to indicate detection is handled
-        window.close(); // Close the window after detection
-    }
-}, 5000);
+      window.opener.postMessage(isloanOfficerDetected, '*');     
+      window.close(); //Close window after detection
+}, 5000); // 5 seconds
 
 });
