@@ -90,9 +90,6 @@ video.addEventListener("play", async () => {
       console.log("Not detected");
     }
     window.opener.postMessage(isloanOfficerDetected, '*');  
-
-    setTimeout(() => {
-      window.location.href = document.referrer;
-    }, 1000); //delay for a split second
+    window.close(); //Close window after detection
 }, 10000); // 10 seconds
 });
