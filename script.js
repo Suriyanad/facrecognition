@@ -84,12 +84,11 @@ video.addEventListener("play", async () => {
   setTimeout(async () => {
     //const response = 'true';
     if(distanceCounter>unknowncounter){
-      console.log("detected");
       isloanOfficerDetected = true;
+      window.opener.postMessage(isloanOfficerDetected, '*'); 
     }else{
-      console.log("Not detected");
-    }
-    window.opener.postMessage(isloanOfficerDetected, '*');  
+      window.opener.postMessage(isloanOfficerDetected, '*');     }
+     
     window.close(); //Close window after detection
-}, 5000); // 10 seconds
+}, 5000); // 5 seconds
 });
